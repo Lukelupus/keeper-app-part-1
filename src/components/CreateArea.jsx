@@ -1,4 +1,7 @@
 import React, {useState} from "react";
+import AddIcon from '@material-ui/icons/Add';
+import Fab from '@mui/material/Fab';
+
 
 
 function CreateArea(props){
@@ -26,17 +29,30 @@ function CreateArea(props){
  
     return(
         <div>
-            <form>
-                <input onChange={handleChange} value={noteText.title} name="title" placeholder="Title" type="text"/>
-                <textarea onChange={handleChange} value={noteText.content} name="content" placeholder="Take a note..." rows="3"></textarea>
-                <button type="button"  onClick={() => {
+            <form className="create-note">
+                <input onChange={handleChange} 
+                value={noteText.title} 
+                name="title" 
+                placeholder="Title" 
+                type="text"
+
+                />
+                <textarea onChange={handleChange} 
+                value={noteText.content} 
+                name="content" 
+                placeholder="Take a note..." 
+                rows="3">
+
+                </textarea>
+
+                <Fab type="button"  onClick={() => {
           props.onAdd(noteText);
           setNoteText({
               title: "", 
               content:""
               });
         }}
-                >Add</button>
+                ><AddIcon /></Fab>
             </form>
         </div>
     );
